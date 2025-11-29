@@ -1,78 +1,65 @@
-# React + Tailwind CSS 4 Boilerplate
+# AI Prompt Creator
 
-A minimal React + Vite + Tailwind CSS 4 boilerplate template for quick project setup.
+**AI Prompt Creator** is a powerful React-based web application designed to help users generate structured JSON prompts for AI image generation models. It provides a dynamic, user-friendly interface to construct complex prompts with nested properties, arrays, and templates.
 
-## 🚀 Quick Start with degit
+## 🚀 Features
 
-### English
+*   **Dynamic JSON Generation**: Build complex JSON structures by adding nested fields and values dynamically.
+*   **Root-Level Editing**: Directly edit root properties of the `image_description`.
+*   **Subject Templates**:
+    *   **Human**: Automatically adds fields for clothing, expression, holding, etc.
+    *   **Car**: Adds fields for brand, model, year, color, etc.
+    *   **Animal**: Adds fields for species, breed, action, etc.
+    *   **Object**: Adds fields for material, color, shape, etc.
+*   **Multiple Subjects**: Support for defining multiple subjects (e.g., two people, a person and a car) in a single prompt.
+*   **Array Support**: Easily create arrays of strings or objects for lists of elements or modifications.
+*   **Upload Placeholders**: Quick-action buttons to insert `[Uploaded image]` or `[Uploaded document]` placeholders.
+*   **Real-Time Preview**: View the generated JSON instantly as you edit.
+*   **One-Click Copy**: Copy the entire JSON structure to your clipboard.
+*   **Premium UI**: A sleek, dark-mode interface built with Tailwind CSS, featuring glassmorphism and smooth animations.
 
-You can quickly clone this template using [degit](https://github.com/Rich-Harris/degit):
+## 🛠️ Tech Stack
 
-```bash
-# Install degit globally (if not already installed)
-npm install -g degit
+*   **Frontend**: React.js
+*   **Build Tool**: Vite
+*   **Styling**: Tailwind CSS
+*   **Icons**: Lucide React
 
-# Clone this template
-degit enesmuzaffer22/react-js-tw4 my-new-project
+## 📦 Installation & Usage
 
-# Navigate to your project
-cd my-new-project
+1.  **Clone the repository**:
+    ```bash
+    git clone <repository-url>
+    cd prompt-creator
+    ```
 
-# Install dependencies
-npm install
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-# Start development server
-npm run dev
-```
+3.  **Start the development server**:
+    ```bash
+    npm run dev
+    ```
 
-### Türkçe
+4.  **Open the application**:
+    Navigate to `http://localhost:5173` in your browser.
 
-Bu şablonu [degit](https://github.com/Rich-Harris/degit) kullanarak hızlıca klonlayabilirsiniz:
+## 📝 Usage Guide
 
-```bash
-# degit'i global olarak yükleyin (eğer yüklü değilse)
-npm install -g degit
+1.  **Image Description**: Add top-level details about the image in the "Image Description" section.
+2.  **Subjects**:
+    *   Click "Add Subject" to add a new character or object.
+    *   Select a "Type" (Human, Car, etc.) to auto-populate relevant fields.
+    *   Add specific details like clothing or expression.
+3.  **Environment & Others**: Fill in details for Environment, Camera Style, Lighting, Mood, and Art Style using the respective cards.
+4.  **Dynamic Fields**:
+    *   Click "Add Field" to add custom properties anywhere.
+    *   Select "Array" to create a list of items.
+    *   Use "Img" or "Doc" buttons to insert upload placeholders.
+5.  **Export**: Click the "Copy JSON" button in the preview pane to get your prompt.
 
-# Bu şablonu klonlayın
-degit enesmuzaffer22/react-js-tw4 yeni-projem
+## 📄 License
 
-# Proje klasörüne gidin
-cd yeni-projem
-
-# Bağımlılıkları yükleyin
-npm install
-
-# Geliştirme sunucusunu başlatın
-npm run dev
-```
-
-## 📦 What's Included / İçerikler
-
-- ⚡ **Vite** - Fast build tool
-- ⚛️ **React 18** - Latest React version
-- 🎨 **Tailwind CSS 4** - Latest Tailwind version
-- 📝 **ESLint** - Code linting
-- 🗂 **React Router DOM** - Routes
-- 🔥 **Hot Module Replacement** - Fast refresh during development
-
-## 🛠️ Development
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## 📋 Available Scripts / Kullanılabilir Komutlar
-
-```bash
-npm run dev          # Start development server / Geliştirme sunucusunu başlat
-npm run build        # Build for production / Üretim için derle
-npm run preview      # Preview production build / Üretim derlemesini önizle
-npm run lint         # Run ESLint / ESLint çalıştır
-```
-
-## 🔧 Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This project is open-source and available under the MIT License.
