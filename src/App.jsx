@@ -1,10 +1,12 @@
 import React from 'react';
 import { PromptProvider, usePrompt } from './context/PromptContext';
+import SubjectCard from './components/SubjectCard';
 import CategoryCard from './components/CategoryCard';
 import JsonPreview from './components/JsonPreview';
+import DynamicInput from './components/DynamicInput';
 
 const MainContent = () => {
-  const { promptData } = usePrompt();
+  const { promptData, addField, removeField, updatePrompt } = usePrompt();
 
   return (
     <div className="min-h-screen bg-black text-zinc-100 p-6 font-sans selection:bg-blue-500/30">
@@ -19,11 +21,24 @@ const MainContent = () => {
 
       <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <CategoryCard 
-            title="Subject" 
-            path={['subject']} 
-            description="Define the main subject, characters, and their details."
-          />
+           {/* Root Image Description Section */}
+           <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 mb-4 shadow-lg">
+              <div className="mb-4 border-b border-zinc-800 pb-2">
+                <h3 className="text-lg font-semibold text-zinc-100 capitalize">Image Description</h3>
+                <p className="text-zinc-400 text-sm">Root level properties.</p>
+              </div>
+              <DynamicInput 
+                data={promptData.image_description} 
+                path={[]} 
+                onAdd={addField} 
+                onRemove={removeField} 
+                onUpdate={updatePrompt}
+                excludeKeys={['subject', 'environment', 'camera_style', 'lighting', 'mood', 'art_style']}
+              />
+            </div>
+
+          <SubjectCard />
+          
           <CategoryCard 
             title="Environment" 
             path={['environment']} 

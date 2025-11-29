@@ -7,7 +7,7 @@ export const usePrompt = () => useContext(PromptContext);
 export const PromptProvider = ({ children }) => {
   const [promptData, setPromptData] = useState({
     image_description: {
-      subject: {},
+      subject: [],
       environment: {},
       camera_style: {},
       lighting: {},

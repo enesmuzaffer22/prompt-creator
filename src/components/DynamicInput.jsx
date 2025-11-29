@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Trash2, Plus, ChevronRight, ChevronDown } from 'lucide-react';
 import { usePrompt } from '../context/PromptContext';
 
-const DynamicInput = ({ data, path, onAdd, onRemove, onUpdate }) => {
+const DynamicInput = ({ data, path, onAdd, onRemove, onUpdate, excludeKeys = [] }) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [newKey, setNewKey] = useState('');
   const [newValue, setNewValue] = useState('');
@@ -79,7 +79,9 @@ const DynamicInput = ({ data, path, onAdd, onRemove, onUpdate }) => {
 
   return (
     <div className="ml-4 border-l-2 border-zinc-700 pl-4 my-2">
-      {Object.entries(data).map(([key, value]) => (
+      {Object.entries(data)
+        .filter(([key]) => !excludeKeys.includes(key))
+        .map(([key, value]) => (
         <div key={key} className="mb-2">
           <div className="flex items-center gap-2 group">
             {(isObject(value) || isArray(value)) && (
