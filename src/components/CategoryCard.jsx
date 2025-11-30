@@ -1,6 +1,6 @@
-import React from 'react';
-import DynamicInput from './DynamicInput';
-import { usePrompt } from '../context/PromptContext';
+import React from "react";
+import DynamicInput from "./DynamicInput";
+import { usePrompt } from "../context/PromptContext";
 
 const CategoryCard = ({ title, path, description }) => {
   const { promptData, addField, removeField, updatePrompt } = usePrompt();
@@ -18,21 +18,23 @@ const CategoryCard = ({ title, path, description }) => {
     return current;
   };
 
-  const data = getData(promptData.image_description, path);
+  const data = getData(promptData.details, path);
 
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 mb-4 shadow-lg">
       <div className="mb-4 border-b border-zinc-800 pb-2">
-        <h3 className="text-lg font-semibold text-zinc-100 capitalize">{title}</h3>
+        <h3 className="text-lg font-semibold text-zinc-100 capitalize">
+          {title}
+        </h3>
         {description && <p className="text-zinc-400 text-sm">{description}</p>}
       </div>
-      
-      <DynamicInput 
-        data={data} 
-        path={path} 
-        onAdd={addField} 
-        onRemove={removeField} 
-        onUpdate={updatePrompt} 
+
+      <DynamicInput
+        data={data}
+        path={path}
+        onAdd={addField}
+        onRemove={removeField}
+        onUpdate={updatePrompt}
       />
     </div>
   );

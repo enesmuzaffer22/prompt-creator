@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 const PromptContext = createContext();
 
@@ -6,33 +6,36 @@ export const usePrompt = () => useContext(PromptContext);
 
 export const PromptProvider = ({ children }) => {
   const [promptData, setPromptData] = useState({
-    image_description: {
+    image_description: "",
+    resolution: "",
+    details: {
       subject: [],
       environment: {},
       camera_style: {},
       lighting: {},
       mood: "",
-      art_style: ""
-    }
+      art_style: "",
+    },
   });
 
   const updatePrompt = (path, value) => {
-    setPromptData(prev => {
+    setPromptData((prev) => {
       const newData = { ...prev };
-      let current = newData.image_description;
-      
-      // Handle root level keys inside image_description
+
+      // Handle root level keys
       if (!Array.isArray(path)) {
-          current[path] = value;
-          return newData;
+        newData[path] = value;
+        return newData;
       }
+
+      let current = newData.details;
 
       // Navigate to the parent of the target
       for (let i = 0; i < path.length - 1; i++) {
         if (!current[path[i]]) current[path[i]] = {};
         current = current[path[i]];
       }
-      
+
       // Set the value
       current[path[path.length - 1]] = value;
       return newData;
@@ -40,15 +43,15 @@ export const PromptProvider = ({ children }) => {
   };
 
   const addField = (path, key, value = "", type = "string") => {
-    setPromptData(prev => {
+    setPromptData((prev) => {
       const newData = JSON.parse(JSON.stringify(prev)); // Deep clone
-      let current = newData.image_description;
-      
+      let current = newData.details;
+
       for (let i = 0; i < path.length; i++) {
         if (!current[path[i]]) current[path[i]] = {};
         current = current[path[i]];
       }
-      
+
       if (type === "object") {
         current[key] = {};
       } else if (type === "array") {
@@ -61,9 +64,9 @@ export const PromptProvider = ({ children }) => {
   };
 
   const addArrayItem = (path, type = "string") => {
-    setPromptData(prev => {
+    setPromptData((prev) => {
       const newData = JSON.parse(JSON.stringify(prev));
-      let current = newData.image_description;
+      let current = newData.details;
 
       for (let i = 0; i < path.length; i++) {
         current = current[path[i]];
@@ -81,14 +84,14 @@ export const PromptProvider = ({ children }) => {
   };
 
   const removeField = (path, key) => {
-    setPromptData(prev => {
+    setPromptData((prev) => {
       const newData = JSON.parse(JSON.stringify(prev));
-      let current = newData.image_description;
-      
+      let current = newData.details;
+
       for (let i = 0; i < path.length; i++) {
         current = current[path[i]];
       }
-      
+
       if (Array.isArray(current)) {
         current.splice(key, 1); // key is index for arrays
       } else {
@@ -99,7 +102,9 @@ export const PromptProvider = ({ children }) => {
   };
 
   return (
-    <PromptContext.Provider value={{ promptData, updatePrompt, addField, removeField, addArrayItem }}>
+    <PromptContext.Provider
+      value={{ promptData, updatePrompt, addField, removeField, addArrayItem }}
+    >
       {children}
     </PromptContext.Provider>
   );
