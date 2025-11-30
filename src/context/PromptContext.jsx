@@ -8,6 +8,7 @@ export const PromptProvider = ({ children }) => {
   const [promptData, setPromptData] = useState({
     image_description: "",
     resolution: "",
+    negative_prompt: "",
     details: {
       subject: [],
       environment: {},

@@ -39,7 +39,7 @@ const MainContent = () => {
                 className="w-full bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
-            <div>
+            <div className="mb-4">
               <label className="block text-sm font-medium text-zinc-300 mb-2">
                 Resolution
               </label>
@@ -49,6 +49,23 @@ const MainContent = () => {
                 onChange={(e) => updatePrompt("resolution", e.target.value)}
                 placeholder="e.g., 1920x1080"
                 className="w-full bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-300 mb-2">
+                Negative Prompt
+                <span className="text-zinc-500 text-xs ml-2">
+                  (What to avoid)
+                </span>
+              </label>
+              <textarea
+                value={promptData.negative_prompt}
+                onChange={(e) =>
+                  updatePrompt("negative_prompt", e.target.value)
+                }
+                placeholder="e.g., blurry, low quality, deformed, watermark, text..."
+                rows="3"
+                className="w-full bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
               />
             </div>
           </div>
