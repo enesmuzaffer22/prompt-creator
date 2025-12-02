@@ -29,27 +29,65 @@ const MainContent = () => {
               <label className="block text-sm font-medium text-zinc-300 mb-2">
                 Image Description
               </label>
-              <input
-                type="text"
-                value={promptData.image_description}
-                onChange={(e) =>
-                  updatePrompt("image_description", e.target.value)
-                }
-                placeholder="Enter image description..."
-                className="w-full bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={promptData.image_description}
+                  onChange={(e) =>
+                    updatePrompt("image_description", e.target.value)
+                  }
+                  placeholder="Enter image description..."
+                  className="flex-1 bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                  onClick={() =>
+                    updatePrompt("image_description", "[Uploaded image]")
+                  }
+                  className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
+                  title="Insert Image Placeholder"
+                >
+                  Img
+                </button>
+                <button
+                  onClick={() =>
+                    updatePrompt("image_description", "[Uploaded document]")
+                  }
+                  className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
+                  title="Insert Document Placeholder"
+                >
+                  Doc
+                </button>
+              </div>
             </div>
             <div className="mb-4">
               <label className="block text-sm font-medium text-zinc-300 mb-2">
                 Resolution
               </label>
-              <input
-                type="text"
-                value={promptData.resolution}
-                onChange={(e) => updatePrompt("resolution", e.target.value)}
-                placeholder="e.g., 1920x1080"
-                className="w-full bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={promptData.resolution}
+                  onChange={(e) => updatePrompt("resolution", e.target.value)}
+                  placeholder="e.g., 1920x1080"
+                  className="flex-1 bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                  onClick={() => updatePrompt("resolution", "[Uploaded image]")}
+                  className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
+                  title="Insert Image Placeholder"
+                >
+                  Img
+                </button>
+                <button
+                  onClick={() =>
+                    updatePrompt("resolution", "[Uploaded document]")
+                  }
+                  className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
+                  title="Insert Document Placeholder"
+                >
+                  Doc
+                </button>
+              </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-zinc-300 mb-2">
@@ -58,15 +96,37 @@ const MainContent = () => {
                   (What to avoid)
                 </span>
               </label>
-              <textarea
-                value={promptData.negative_prompt}
-                onChange={(e) =>
-                  updatePrompt("negative_prompt", e.target.value)
-                }
-                placeholder="e.g., blurry, low quality, deformed, watermark, text..."
-                rows="3"
-                className="w-full bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
-              />
+              <div className="flex gap-2">
+                <textarea
+                  value={promptData.negative_prompt}
+                  onChange={(e) =>
+                    updatePrompt("negative_prompt", e.target.value)
+                  }
+                  placeholder="e.g., blurry, low quality, deformed, watermark, text..."
+                  rows="3"
+                  className="flex-1 bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none"
+                />
+                <div className="flex flex-col gap-1">
+                  <button
+                    onClick={() =>
+                      updatePrompt("negative_prompt", "[Uploaded image]")
+                    }
+                    className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
+                    title="Insert Image Placeholder"
+                  >
+                    Img
+                  </button>
+                  <button
+                    onClick={() =>
+                      updatePrompt("negative_prompt", "[Uploaded document]")
+                    }
+                    className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
+                    title="Insert Document Placeholder"
+                  >
+                    Doc
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
