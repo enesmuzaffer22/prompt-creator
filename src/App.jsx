@@ -41,7 +41,12 @@ const MainContent = () => {
                 />
                 <button
                   onClick={() =>
-                    updatePrompt("image_description", "[Uploaded image]")
+                    updatePrompt(
+                      "image_description",
+                      promptData.image_description
+                        ? `${promptData.image_description} [Uploaded image]`
+                        : "[Uploaded image]"
+                    )
                   }
                   className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                   title="Insert Image Placeholder"
@@ -50,7 +55,12 @@ const MainContent = () => {
                 </button>
                 <button
                   onClick={() =>
-                    updatePrompt("image_description", "[Uploaded document]")
+                    updatePrompt(
+                      "image_description",
+                      promptData.image_description
+                        ? `${promptData.image_description} [Uploaded document]`
+                        : "[Uploaded document]"
+                    )
                   }
                   className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                   title="Insert Document Placeholder"
@@ -72,7 +82,14 @@ const MainContent = () => {
                   className="flex-1 bg-zinc-800 border border-zinc-700 rounded px-3 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button
-                  onClick={() => updatePrompt("resolution", "[Uploaded image]")}
+                  onClick={() =>
+                    updatePrompt(
+                      "resolution",
+                      promptData.resolution
+                        ? `${promptData.resolution} [Uploaded image]`
+                        : "[Uploaded image]"
+                    )
+                  }
                   className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                   title="Insert Image Placeholder"
                 >
@@ -80,7 +97,12 @@ const MainContent = () => {
                 </button>
                 <button
                   onClick={() =>
-                    updatePrompt("resolution", "[Uploaded document]")
+                    updatePrompt(
+                      "resolution",
+                      promptData.resolution
+                        ? `${promptData.resolution} [Uploaded document]`
+                        : "[Uploaded document]"
+                    )
                   }
                   className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                   title="Insert Document Placeholder"
@@ -109,7 +131,12 @@ const MainContent = () => {
                 <div className="flex flex-col gap-1">
                   <button
                     onClick={() =>
-                      updatePrompt("negative_prompt", "[Uploaded image]")
+                      updatePrompt(
+                        "negative_prompt",
+                        promptData.negative_prompt
+                          ? `${promptData.negative_prompt} [Uploaded image]`
+                          : "[Uploaded image]"
+                      )
                     }
                     className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                     title="Insert Image Placeholder"
@@ -118,7 +145,12 @@ const MainContent = () => {
                   </button>
                   <button
                     onClick={() =>
-                      updatePrompt("negative_prompt", "[Uploaded document]")
+                      updatePrompt(
+                        "negative_prompt",
+                        promptData.negative_prompt
+                          ? `${promptData.negative_prompt} [Uploaded document]`
+                          : "[Uploaded document]"
+                      )
                     }
                     className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                     title="Insert Document Placeholder"

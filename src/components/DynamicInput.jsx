@@ -59,7 +59,10 @@ const DynamicInput = ({
                   />
                   <button
                     onClick={() =>
-                      onUpdate([...path, index], "[Uploaded image]")
+                      onUpdate(
+                        [...path, index],
+                        item ? `${item} [Uploaded image]` : "[Uploaded image]"
+                      )
                     }
                     className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                     title="Insert Image Placeholder"
@@ -68,7 +71,12 @@ const DynamicInput = ({
                   </button>
                   <button
                     onClick={() =>
-                      onUpdate([...path, index], "[Uploaded document]")
+                      onUpdate(
+                        [...path, index],
+                        item
+                          ? `${item} [Uploaded document]`
+                          : "[Uploaded document]"
+                      )
                     }
                     className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                     title="Insert Document Placeholder"
@@ -143,7 +151,12 @@ const DynamicInput = ({
                     className="bg-zinc-800 text-zinc-100 px-2 py-1 rounded border border-zinc-700 focus:border-blue-500 outline-none flex-1"
                   />
                   <button
-                    onClick={() => onUpdate([...path, key], "[Uploaded image]")}
+                    onClick={() =>
+                      onUpdate(
+                        [...path, key],
+                        value ? `${value} [Uploaded image]` : "[Uploaded image]"
+                      )
+                    }
                     className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                     title="Insert Image Placeholder"
                   >
@@ -151,7 +164,12 @@ const DynamicInput = ({
                   </button>
                   <button
                     onClick={() =>
-                      onUpdate([...path, key], "[Uploaded document]")
+                      onUpdate(
+                        [...path, key],
+                        value
+                          ? `${value} [Uploaded document]`
+                          : "[Uploaded document]"
+                      )
                     }
                     className="bg-zinc-700 hover:bg-zinc-600 text-zinc-300 px-2 py-1 rounded text-xs transition-colors"
                     title="Insert Document Placeholder"
@@ -226,14 +244,24 @@ const DynamicInput = ({
                 />
                 <div className="flex gap-1">
                   <button
-                    onClick={() => setNewValue("[Uploaded image]")}
+                    onClick={() =>
+                      setNewValue((prev) =>
+                        prev ? `${prev} [Uploaded image]` : "[Uploaded image]"
+                      )
+                    }
                     className="bg-zinc-700 text-zinc-300 px-2 py-1 rounded text-xs hover:bg-zinc-600"
                     title="Insert Image Placeholder"
                   >
                     Img
                   </button>
                   <button
-                    onClick={() => setNewValue("[Uploaded document]")}
+                    onClick={() =>
+                      setNewValue((prev) =>
+                        prev
+                          ? `${prev} [Uploaded document]`
+                          : "[Uploaded document]"
+                      )
+                    }
                     className="bg-zinc-700 text-zinc-300 px-2 py-1 rounded text-xs hover:bg-zinc-600"
                     title="Insert Document Placeholder"
                   >
